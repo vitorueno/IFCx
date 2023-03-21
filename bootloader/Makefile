@@ -14,7 +14,7 @@ CFLAGS = -ffreestanding -m32 -g
 LDFLAGS = -Ttext 0x1000 --oformat binary
 
 # List of object files to build
-OBJS = kernel_entry.o kernel.o 
+OBJS = kernel_entry.o kernel.o print.o
 
 # ===============REGRA GERAL=================
 
@@ -34,7 +34,6 @@ boot.bin: boot.o
 boot.o: boot.S
 	as $< -o $@
 
-
 # ================FULL KERNEL===============
 
 # Rule to link the kernel
@@ -50,6 +49,8 @@ kernel_entry.o: kernel_entry.S
 kernel.o: kernel.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
+print.o: print.cpp 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # =========== COMANDOS =====================
 
