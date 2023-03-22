@@ -139,7 +139,7 @@ int print(const char *message, int linha, int coluna)
 {
     bool cabe = (length(message) + coluna) < 80;
 
-    if ((linha > 24) || !(linha == 24 && cabe))
+    if ((linha > 24) || (linha == 24 && !cabe))
     {
         return 1;
     }
