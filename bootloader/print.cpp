@@ -55,10 +55,10 @@ int print(const char *message)
     char *console = (char *)0xb8000;
 
     // iterando pela String (até encontrar \0 -> fim da string)
-    for (int i = 0; message[i] != '\0'; i += 2)
+    for (int i = 0; message[i] != '\0'; i++)
     {
-        console[i] = message[i]; // escreve o caracter na posição
-        console[i + 1] = 0x0F;   // o byte seguinte recebe a formatação (branco no fundo preto aqui)
+        console[i * 2] = message[i]; // escreve o caracter na posição
+        console[i * 2 + 1] = 0x0F;   // o byte seguinte recebe a formatação (branco no fundo preto aqui)
     }
 
     return 0;
