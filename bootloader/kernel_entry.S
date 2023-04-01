@@ -12,4 +12,7 @@ _start:
     mov $0x0f, %ah              # formatação texto branco
     mov %ax, 0xb800C            # adicionando o caracter + formatação na memória de vídeo após os anteriores
 
+loop:
     hlt                         # loop infinito
+    jmp loop
+

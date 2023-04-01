@@ -6,7 +6,7 @@ levando em conta que estamos usando o modo de vídeo 0x3 -> 24 linhas e 80 colun
 */
 
 // retorna o tamanho de uma string
-int length(const char *str)
+int strLen(const char *str)
 {
     int size = 0;
     while (*str != '\0')
@@ -18,7 +18,7 @@ int length(const char *str)
 }
 
 // retorna o tamanho de um número inteiro
-int length(int numero)
+int numLen(int numero)
 {
     int size = 0;
 
@@ -49,7 +49,7 @@ int pow(int base, int expoente)
 }
 
 /* Função que imprime a mensagem no canto superior esquerdo da tela */
-int print(const char *message)
+int printString(const char *message)
 {
     // endereço do início do endereço de memória de vídeo
     char *console = (char *)0xb8000;
@@ -65,7 +65,7 @@ int print(const char *message)
 }
 
 /* Função que imprime um número no canto superior esquerdo da tela */
-int print(int numero)
+int printNum(int numero)
 {
     if (numero < 0)
     {
@@ -82,7 +82,7 @@ int print(int numero)
 
     while (numero > 0)
     {
-        int tamanho = length(numero);
+        int tamanho = numLen(numero);
         int divisor = pow(10, tamanho-1);
 
         int digito = numero / (divisor);
@@ -99,7 +99,7 @@ int print(int numero)
 }
 
 /* Função que imprime um número numa linha e coluna específica */
-int print(int numero, int linha, int coluna)
+int printNumAt(int numero, int linha, int coluna)
 {
     if (numero < 0)
     {
@@ -118,7 +118,7 @@ int print(int numero, int linha, int coluna)
 
     while (numero > 0)
     {
-        int tamanho = length(numero);
+        int tamanho = numLen(numero);
         int divisor = pow(10, tamanho-1);
 
         int digito = numero / (divisor);
@@ -135,9 +135,9 @@ int print(int numero, int linha, int coluna)
 }
 
 /* Função que imprime uma mensagem numa linha e coluna específica */
-int print(const char *message, int linha, int coluna)
+int printStringAt(const char *message, int linha, int coluna)
 {
-    bool cabe = (length(message) + coluna) < 80;
+    bool cabe = (strLen(message) + coluna) < 80;
 
     if ((linha > 24) || (linha == 24 && !cabe))
     {

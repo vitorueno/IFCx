@@ -1,17 +1,14 @@
-int length(const char *str);
+#ifndef __PRINT_H__
+#define __PRINT_H__
 
+#include "types.h"
 
-int length(int numero);
-
-
+int strLen(const char *str);
+int numLen(int numero);
 int pow(int base, int expoente);
+int printString(const char *message);
+int printNum(int numero);
+int printNumAt(int numero, int linha, int coluna);
+int printStringAt(const char *message, int linha, int coluna);
 
-int print(const char *message);
-
-
-int print(int numero);
-
-int print(int numero, int linha, int coluna);
-
-
-int print(const char *message, int linha, int coluna);
+#endif // __PRINT_H__
