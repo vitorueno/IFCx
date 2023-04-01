@@ -5,6 +5,7 @@
 
 .globl _start 
 
+# calls main, write Z to screen and halts
 _start: 
     call main                   # chamando a função main do código C
 
@@ -15,4 +16,3 @@ _start:
 loop:
     hlt                         # loop infinito
     jmp loop
-
