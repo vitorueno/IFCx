@@ -5,14 +5,80 @@
 
 .globl _start 
 
-# calls main, write Z to screen and halts
 _start: 
-    call main                   # chamando a função main do código C
+    call main                   # chamando a função main do código C           
 
-    mov $'Z', %al               # caracter a imprimir
-    mov $0x0f, %ah              # formatação texto branco
-    mov %ax, 0xb800C            # adicionando o caracter + formatação na memória de vídeo após os anteriores
+    #int $0x0
+    #mov $10, %eax 
+    #mov $0, %ebx
+    #div %ebx 
 
-loop:
-    hlt                         # loop infinito
-    jmp loop
+.global fim 
+fim: 
+    hlt
+    jmp fim
+
+
+# funções 
+
+.global teste
+teste: 
+    pushl %ebp
+    movl %esp, %ebp 
+
+    movl 8(%ebp), %eax  # first parameter
+
+    movb $0x0E, %ah             
+    movw %ax, 0xb800C           
+
+    movl %ebp, %esp 
+    popl %ebp 
+    ret 
+
+
+.global loadIDT 
+loadIDT: 
+    pushl %ebp
+    movl %esp, %ebp 
+
+    movl 8(%ebp), %eax
+    lidt (%eax)            # loads idt
+
+    movl %ebp, %esp 
+    popl %ebp 
+    ret 
+
+.extern isrHandler
+
+.global isr0
+isr0: 
+    push $0 
+    push $0 
+    jmp isr_common
+
+isr_common:
+    pusha 
+
+    xor %eax, %eax 
+    mov %ds, %ax 
+    push %eax       # push ds 
+
+    mov $0x10, %ax 
+    mov %ax, %ds 
+    mov %ax, %es 
+    mov %ax, %fs 
+    mov %ax, %gs 
+
+    push %esp 
+    call isrHandler
+    add $4, %esp 
+
+    pop %eax 
+    mov %ax, %ds 
+    mov %ax, %es 
+    mov %ax, %fs 
+    mov %ax, %gs 
+
+    popa 
+    add $8, %esp
+    iret 
