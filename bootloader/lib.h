@@ -1,7 +1,6 @@
 #ifndef __LIB_H__
 #define __LIB_H__
 
-
 #include "types.h"
 
 extern void *memcpy(void *dest, void *src, size_t count);  // copia bytes de src para dest 

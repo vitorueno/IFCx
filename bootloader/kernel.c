@@ -1,26 +1,27 @@
-#include "print.h"
+#include "imprime.h"
 #include "types.h"
 #include "lib.h"
 
-
-int main() // definindo como externa para o linker solucionar referências
+int main (void) // definindo como externa para o linker solucionar referências
 {
     // testando os boleanos
     bool teste = true;
-    char *mensagem = "Bem vindo ao IFCX\0";
+    char *mensagem = "Bem vindo ao IFCX";
 
     if (teste == true) {
-        printString(mensagem); 
-        printNumAt(strLen(mensagem), 1,1);
+        puts(mensagem); 
+        putch('\n');
+        char sizeMessage = strlen(mensagem);
+        putch(sizeMessage);
     }
 
 
     char csrc[] = "Teste memcpy";
-    char cdest[100]; 
-    memcpy(cdest, csrc, strlen(csrc) +1);
-    printStringAt(cdest, 2, 1);
+    char cdest[100];
+    memcpy(cdest, csrc, strlen(csrc) + 1);
+    puts(cdest);
     memset(cdest, 'x', 80);
-    printStringAt(cdest, 3, 1);
+    puts(cdest);
 
     size_t a = 10;
 
