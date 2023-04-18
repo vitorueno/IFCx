@@ -116,55 +116,55 @@ void __attribute__((cdecl)) isrHandler(Registers *regs) {
     if (regs->interrupt <=32) {
         // mostrar erro 
         printStringAt("Erro numero: ", 1, 1);
-        printNumAt(regs->interrupt,1, 1+strLen("Erro numero: "));
+        printNumAt(regs->interrupt,1, 1+strlen("Erro numero: "));
         printStringAt("\"", 1, 17);
         printStringAt(exceptionMessages[regs->interrupt],1,18);
-        printStringAt("\"", 1, 18+strLen(exceptionMessages[regs->interrupt]));
+        printStringAt("\"", 1, 18+strlen(exceptionMessages[regs->interrupt]));
 
         // mostrar regs 
         printStringAt("eax: ", 2, 1);
-        printNumAt(regs->eax, 2, 1 + strLen("eax: "));
+        printNumAt(regs->eax, 2, 1 + strlen("eax: "));
 
         printStringAt("ebx: ", 3, 1);
-        printNumAt(regs->ebx, 3, 1 + strLen("ebx: "));
+        printNumAt(regs->ebx, 3, 1 + strlen("ebx: "));
 
         printStringAt("ecx: ", 4, 1);
-        printNumAt(regs->ecx, 4, 1 + strLen("ecx: "));
+        printNumAt(regs->ecx, 4, 1 + strlen("ecx: "));
 
         printStringAt("edx: ", 5, 1);
-        printNumAt(regs->edx, 5, 1 + strLen("edx: "));
+        printNumAt(regs->edx, 5, 1 + strlen("edx: "));
 
         printStringAt("edi: ", 6, 1);
-        printNumAt(regs->edi, 6, 1 + strLen("edi: "));
+        printNumAt(regs->edi, 6, 1 + strlen("edi: "));
 
         printStringAt("esi: ", 7, 1);
-        printNumAt(regs->esi, 7, 1 + strLen("esi: "));
+        printNumAt(regs->esi, 7, 1 + strlen("esi: "));
 
         printStringAt("ebp: ", 8, 1);
-        printNumAt(regs->ebp, 8, 1 + strLen("ebp: "));
+        printNumAt(regs->ebp, 8, 1 + strlen("ebp: "));
 
         printStringAt("esp: ", 9, 1);
-        printNumAt(regs->esp, 9, 1 + strLen("ebp: "));
+        printNumAt(regs->esp, 9, 1 + strlen("ebp: "));
 
         printStringAt("ss: ", 10, 1);
-        printNumAt(regs->ss, 10, 1 + strLen("ss: "));
+        printNumAt(regs->ss, 10, 1 + strlen("ss: "));
 
         printStringAt("ds: ", 11, 1);
-        printNumAt(regs->ds, 11, 1 + strLen("ds: "));
+        printNumAt(regs->ds, 11, 1 + strlen("ds: "));
 
         printStringAt("cs: ", 12, 1);
-        printNumAt(regs->cs, 12, 1 + strLen("cs: "));
+        printNumAt(regs->cs, 12, 1 + strlen("cs: "));
 
         printStringAt("eflags: ", 13, 1);
-        printNumAt(regs->eflags, 13, 1 + strLen("eflags: "));
+        printNumAt(regs->eflags, 13, 1 + strlen("eflags: "));
 
         printStringAt("eip: ", 14, 1);
-        printNumAt(regs->eip, 14, 1 + strLen("eip: "));
+        printNumAt(regs->eip, 14, 1 + strlen("eip: "));
 
         fim();
     } else {
         printStringAt("interrupcao numero: ", 1, 1);
-        printNumAt(regs->interrupt, 1, 1+strLen("interrupcao numero: "));
+        printNumAt(regs->interrupt, 1, 1+strlen("interrupcao numero: "));
 
     }
 }

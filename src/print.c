@@ -1,21 +1,11 @@
 #include "print.h"
 
+
 /*
 as funções escrevem diretamente na memória a partir do endereço 0xb8000
 levando em conta que estamos usando o modo de vídeo 0x3 -> 24 linhas e 80 colunas
 */
 
-// retorna o tamanho de uma string
-int strLen(const char *str)
-{
-    int size = 0;
-    while (*str != '\0')
-    {
-        size++;
-        str++;
-    }
-    return size;
-}
 
 // retorna o tamanho de um número inteiro
 int numLen(int numero)
@@ -137,7 +127,7 @@ int printNumAt(int numero, int linha, int coluna)
 /* Função que imprime uma mensagem numa linha e coluna específica */
 int printStringAt(const char *message, int linha, int coluna)
 {
-    bool cabe = (strLen(message) + coluna) < 80;
+    bool cabe = (strlen(message) + coluna) < 80;
 
     if ((linha > 24) || (linha == 24 && !cabe))
     {

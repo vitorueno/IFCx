@@ -2,8 +2,8 @@
 #define __PRINT_H__
 
 #include "types.h"
+#include "lib.h"
 
-int strLen(const char *str);
 int numLen(int numero);
 int pow(int base, int expoente);
 int printString(const char *message);

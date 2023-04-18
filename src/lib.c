@@ -2,7 +2,6 @@
 
 
 extern void *memcpy(void *dest, void *src, size_t count) {
-    // convertendo para ponteiro de char
     char *char_src = (char *)src;
     char *char_dest = (char *)dest;
 
@@ -15,7 +14,6 @@ extern void *memcpy(void *dest, void *src, size_t count) {
 
 
 extern void *memset(void *dest, char val, size_t count) {
-    // convertendo para pointeiro para char
     char *char_dest = (char *)dest;
 
     while (count != 0) { 
@@ -40,9 +38,12 @@ extern uint16_t *memsetw(uint16_t *dest, uint16_t val, size_t count) {
 
 
 extern size_t strlen(const char *str) {
-    size_t retval;
-    for(retval = 0; *str != '\0'; str++) retval++;
-    return retval;
+    size_t length;
+    for(length = 0; *str != '\0'; str++) {
+        length++;
+    }
+
+    return length;
 }
 
 
