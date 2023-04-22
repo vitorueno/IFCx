@@ -43,5 +43,5 @@ extern void __attribute__((cdecl)) loadIDT(IdtPointer *idtPtr); // written in th
 void initializeIDT()
 {
     loadIDT(&idtPointer);
-    printStringAt("IDT carregada", 23, 1);
+    printStringAt("IDT carregada", 22, 1);
 }

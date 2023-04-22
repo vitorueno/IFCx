@@ -36,18 +36,35 @@ void __attribute((cdecl)) isr29();
 void __attribute((cdecl)) isr30();
 void __attribute((cdecl)) isr31();
 
+void __attribute((cdecl)) isr32();
+void __attribute((cdecl)) isr33();
+void __attribute((cdecl)) isr34();
+void __attribute((cdecl)) isr35();
+void __attribute((cdecl)) isr36();
+void __attribute((cdecl)) isr37();
+void __attribute((cdecl)) isr38();
+void __attribute((cdecl)) isr39();
+void __attribute((cdecl)) isr40();
+void __attribute((cdecl)) isr41();
+void __attribute((cdecl)) isr42();
+void __attribute((cdecl)) isr43();
+void __attribute((cdecl)) isr44();
+void __attribute((cdecl)) isr45();
+void __attribute((cdecl)) isr46();
+void __attribute((cdecl)) isr47();
 
-void initializeISRGates() {
-    setIdtGate(0,  isr0, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
-    setIdtGate(1,  isr1, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
-    setIdtGate(2,  isr2, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
-    setIdtGate(3,  isr3, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
-    setIdtGate(4,  isr4, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
-    setIdtGate(5,  isr5, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
-    setIdtGate(6,  isr6, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
-    setIdtGate(7,  isr7, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
-    setIdtGate(8,  isr8, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
-    setIdtGate(9,  isr9, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+void initializeISRGates()
+{
+    setIdtGate(0, isr0, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(1, isr1, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(2, isr2, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(3, isr3, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(4, isr4, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(5, isr5, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(6, isr6, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(7, isr7, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(8, isr8, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(9, isr9, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
     setIdtGate(10, isr10, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
     setIdtGate(11, isr11, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
     setIdtGate(12, isr12, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
@@ -69,12 +86,29 @@ void initializeISRGates() {
     setIdtGate(28, isr28, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
     setIdtGate(29, isr29, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
     setIdtGate(30, isr30, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
-    setIdtGate(33, isr31, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(31, isr31, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+
+    setIdtGate(32, isr32, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(33, isr33, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(34, isr34, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(35, isr35, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(36, isr36, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(37, isr37, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(38, isr38, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(39, isr39, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(40, isr40, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(41, isr41, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(42, isr42, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(43, isr43, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(44, isr44, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(45, isr45, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(46, isr46, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
+    setIdtGate(47, isr47, GDT_CODE_SEGMENT, IDT_FLAG_RING0 | IDT_FLAG_GATE_32BIT_INT);
 }
 
 ISRHandler isrHandlers[256];
 
-static const char* const exceptionMessages[] = {
+static const char *const exceptionMessages[] = {
     "Divide by zero error",
     "Debug",
     "Non-maskable Interrupt",
@@ -106,22 +140,25 @@ static const char* const exceptionMessages[] = {
     "Hypervisor Injection Exception",
     "VMM Communication Exception",
     "Security Exception",
-    ""
-};
-
+    ""};
 
 extern void fim();
 
-void __attribute__((cdecl)) isrHandler(Registers *regs) {
-    if (regs->interrupt <=32) {
-        // mostrar erro 
-        printStringAt("Erro numero: ", 1, 1);
-        printNumAt(regs->interrupt,1, 1+strlen("Erro numero: "));
-        printStringAt("\"", 1, 17);
-        printStringAt(exceptionMessages[regs->interrupt],1,18);
-        printStringAt("\"", 1, 18+strlen(exceptionMessages[regs->interrupt]));
+void __attribute__((cdecl)) isrHandler(Registers *regs)
+{
+    if (isrHandlers[regs->interrupt] != NULL)
+        isrHandlers[regs->interrupt](regs);
 
-        // mostrar regs 
+    else if (regs->interrupt < 32)
+    {
+        // mostrar erro
+        printStringAt("Erro numero: ", 1, 1);
+        printNumAt(regs->interrupt, 1, 1 + strlen("Erro numero: "));
+        printStringAt("\"", 1, 17);
+        printStringAt(exceptionMessages[regs->interrupt], 1, 18);
+        printStringAt("\"", 1, 18 + strlen(exceptionMessages[regs->interrupt]));
+
+        // mostrar regs
         printStringAt("eax: ", 2, 1);
         printNumAt(regs->eax, 2, 1 + strlen("eax: "));
 
@@ -162,22 +199,24 @@ void __attribute__((cdecl)) isrHandler(Registers *regs) {
         printNumAt(regs->eip, 14, 1 + strlen("eip: "));
 
         fim();
-    } else {
+    }
+    else
+    {
         printStringAt("interrupcao numero: ", 1, 1);
-        printNumAt(regs->interrupt, 1, 1+strlen("interrupcao numero: "));
-
+        printNumAt(regs->interrupt, 1, 1 + strlen("interrupcao numero: "));
     }
 }
 
-void initializeISR() {
+void initializeISR()
+{
     initializeISRGates();
 
     for (int i = 0; i < 256; i++)
-        enableIdtGate(i);  // setting the flag
+        enableIdtGate(i); // setting the flag
 
     disableIdtGate(0x80);
 
-    printStringAt("ISRs carregadas", 24, 1);
+    printStringAt("ISRs carregadas", 23, 1);
 }
 
 void isrRegisterHandler(int interruptNumber, ISRHandler handler)
