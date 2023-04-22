@@ -5,6 +5,7 @@
 #include "idt.h"
 #include "isr.h"
 #include "irq.h"
+#include "tty.h"
 
 void onTimerTick(Registers *regs)
 {
@@ -27,6 +28,17 @@ int main()
 
     irqRegisterHandler(0, onTimerTick);
     irqRegisterHandler(1, onKeyPress);
+
+    bool testarTTY = false;
+
+    if (testarTTY)
+    {
+        initTTY();
+        putc('\n');
+        putc('a');
+        putc('\n');
+        putc('z');
+    }
 
     return 0; // returning control to assembly code
 }
