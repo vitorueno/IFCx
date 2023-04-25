@@ -14,7 +14,11 @@ CFLAGS = -ffreestanding -m32 -g
 LDFLAGS = -Ttext 0x1000 --oformat binary
 
 # List of object files to build
+<<<<<<< HEAD:bootloader/Makefile
 OBJS = kernel_entry.o kernel.o lib.o imprime.o 
+=======
+OBJS = kernel_entry.o kernel.o print.o lib.o io.o idt.o isr.o pic.o irq.o tty.o
+>>>>>>> testes_idt-vitor(main):src/Makefile
 
 BUILD_DIR = build/
 
@@ -68,6 +72,30 @@ imprime.o: imprime.c
 
 lib.o: lib.c 
 	@echo "-> compiling: $< => $@" 
+	@$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$@
+
+io.o: io.c 
+	@echo "-> compiling: $< => $@" 
+	@$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$@
+
+idt.o: idt.c 
+	@echo "-> compiling: $< => $@" 
+	@$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$@
+
+isr.o: isr.c 
+	@echo "-> compiling: $< => $@" 
+	@$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$@
+
+pic.o: pic.c 
+	@echo "-> compiling $< => $@"
+	@$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$@
+
+irq.o: irq.c 
+	@echo "-> compiling $< => $@"
+	@$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$@
+
+tty.o: tty.c
+	@echo "-> compiling $< => $@"
 	@$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$@
 
 # Clean up generated files
