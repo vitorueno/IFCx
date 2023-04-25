@@ -5,9 +5,11 @@
 #include "lib.h"
 
 extern void cls();
-extern void putch(unsigned char c);
-extern void puts(unsigned char *str);
-extern void settextcolor(unsigned char forecolor, unsigned char backcolor);
+extern void putch(uint8_t c);
+extern void puts(uint8_t *str);
+extern void settextcolor(uint8_t forecolor, uint8_t backcolor);
 extern void init_video();
+
+
 
 #endif

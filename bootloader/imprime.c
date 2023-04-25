@@ -1,7 +1,7 @@
 #include "imprime.h"
 #include "lib.h"
 
-unsigned short *textmemptr;
+uint16_t *textmemptr;
 
 int text_color = 0x0F; // white
 
@@ -12,8 +12,8 @@ void scroll(void)
 {
     // unsigned -> Valor precisa ser >= 0
 
-    unsigned int espaco_em_branco;
-    unsigned int temp;
+    uint32_t espaco_em_branco;
+    uint32_t temp;
 
     // Espaço em branco e cor do texto branco
     espaco_em_branco = 0x20 | (text_color << 8);
@@ -33,7 +33,7 @@ void scroll(void)
 
 void move_csr(void)
 {
-    unsigned temp;
+    uint32_t temp;
 
 //  Temp recebe a posição atual do cursor na tela
 
@@ -54,7 +54,7 @@ void move_csr(void)
 
 void cls()
 {
-    unsigned blank;
+    uint32_t blank;
     int i;
 
     blank = 0x20 | (text_color << 8);
@@ -70,10 +70,10 @@ void cls()
 }
 
 /* Puts a single character on the screen */
-void putch(unsigned char c)
+void putch(uint8_t c)
 {
-    unsigned short *where;
-    unsigned att = text_color << 8;
+    uint16_t *where;
+    uint32_t att = text_color << 8;
 
     /* VK_BACK	0x08	Chave BACKSPACE */
     if(c == 0x08){
@@ -138,7 +138,7 @@ void putch(unsigned char c)
 }
 
 /* Uses the above routine to output a string... */
-void puts(unsigned char *text)
+void puts(uint8_t *text)
 {
     int i;
 
@@ -149,7 +149,7 @@ void puts(unsigned char *text)
 }
 
 /* Define cor principal e cor de fundo */
-void settextcolor(unsigned char forecolor, unsigned char backcolor)
+void settextcolor(uint8_t forecolor, uint8_t backcolor)
 {
     // Os 4 bytes superiores são o plano de fundo, os 4 bytes inferiores são a cor do primeiro plano
     text_color = (backcolor << 4) | (forecolor & 0x0F);
@@ -158,6 +158,6 @@ void settextcolor(unsigned char forecolor, unsigned char backcolor)
 /* Define o ponteiro VGA em modo de texto e limpa a tela */
 void init_video(void)
 {
-    textmemptr = (unsigned short *)0xB8000;
+    textmemptr = (uint16_t *)0xB8000;
     cls();
 }

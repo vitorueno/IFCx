@@ -8,5 +8,4 @@ typedef enum { false, true } bool;
 #define uint64_t unsigned long int 
 #define size_t unsigned int 
 
-
 #endif // __TYPES_H__

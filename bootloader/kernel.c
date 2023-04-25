@@ -4,15 +4,20 @@
 
 int main (void) // definindo como externa para o linker solucionar referências
 {
-    // testando os boleanos
+    // 'Abre' a porta de video
     init_video();
+
+    // Define cor de fonte e fundo
     settextcolor(15, 0);
-    putch('a');
-    puts("abcd\n123");
+
+    puts("Rodrigo\nCabral\nBock");
 
     cls();
 
-    puts("abcd\n123456");
+    puts("Exemplo 1"); 
+
+    cls();
+   
 
     
     return 0; // retornando o controle para kernel_entry (assembly)
