@@ -14,7 +14,11 @@ CFLAGS = -ffreestanding -m32 -g
 LDFLAGS = -Ttext 0x1000 --oformat binary
 
 # List of object files to build
+<<<<<<< HEAD:bootloader/Makefile
+OBJS = kernel_entry.o kernel.o lib.o imprime.o 
+=======
 OBJS = kernel_entry.o kernel.o print.o lib.o io.o idt.o isr.o pic.o irq.o tty.o
+>>>>>>> testes_idt-vitor(main):src/Makefile
 
 BUILD_DIR = build/
 
@@ -62,7 +66,7 @@ kernel.o: kernel.c
 	@echo "-> compiling: $< => $@" 
 	@$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$@
 
-print.o: print.c 
+imprime.o: imprime.c 
 	@echo "-> compiling: $< => $@" 
 	@$(CC) $(CFLAGS) -c $< -o $(BUILD_DIR)$@
 

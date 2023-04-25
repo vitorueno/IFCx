@@ -9,5 +9,4 @@ typedef enum { false, true } bool;
 #define size_t unsigned int 
 #define NULL ( (void *) 0)
 
-
 #endif // __TYPES_H__
