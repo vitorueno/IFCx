@@ -14,7 +14,7 @@ CFLAGS = -ffreestanding -m32 -g
 LDFLAGS = -Ttext 0x1000 --oformat binary
 
 # List of object files to build
-OBJS = kernel_entry.o kernel.o imprime.o lib.o
+OBJS = kernel_entry.o kernel.o lib.o imprime.o 
 
 BUILD_DIR = build/
 

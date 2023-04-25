@@ -1,5 +1,5 @@
-#ifndef __LIB_H__
-#define __LIB_H__
+#ifndef __IMPRIME_H_
+#define __IMPRIME_H_
 
 #include "types.h"
 #include "lib.h"
