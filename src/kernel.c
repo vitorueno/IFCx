@@ -5,26 +5,30 @@
 #include "idt.h"
 #include "isr.h"
 #include "irq.h"
-#include "tty.h"
+#include "print.h"
 
 void onTimerTick(Registers *regs)
 {
-    printStringAt("O timer foi disparado", 3, 1);
+    //puts("O timer foi disparado");
+    putc('\n');
+    puts(intToAscii(-123));
 }
 
 void onKeyPress(Registers *regs)
 {
-    printStringAt("Uma tecla foi pressionada", 4, 1);
+    puts("Uma tecla foi pressionada");
 }
 
 int main()
 {
+    init_video();
     initializeIDT();
     initializeISR();
     initializeIRQ();
 
+
     char *mensagem = "Bem vindo ao IFCX\0";
-    printString(mensagem);
+    puts(mensagem);
 
     irqRegisterHandler(0, onTimerTick);
     irqRegisterHandler(1, onKeyPress);
@@ -33,7 +37,6 @@ int main()
 
     if (testarTTY)
     {
-        initTTY();
         putc('\n');
         putc('a');
         putc('\n');

@@ -5,11 +5,11 @@
 #include "lib.h"
 
 extern void cls();
-extern void putch(uint8_t c);
+extern void putc(uint8_t c);
 extern void puts(uint8_t *str);
 extern void settextcolor(uint8_t forecolor, uint8_t backcolor);
 extern void init_video();
-
+uint8_t *intToAscii(int number);
 
 
 #endif

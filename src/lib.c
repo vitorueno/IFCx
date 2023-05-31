@@ -49,3 +49,21 @@ size_t strlen(const char *str)
 
     return length;
 }
+
+size_t numlen(const uint64_t num)
+{
+    size_t length = 0;
+    uint64_t temp = num;
+    
+    if (temp == 0) {
+        return 1;
+    }
+    
+    while (temp != 0) {
+        temp /= 10;
+        length++;
+    }
+    
+    return length;
+}
+

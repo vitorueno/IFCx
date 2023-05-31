@@ -22,19 +22,3 @@ void iowait()
 {
     outportb(UNUSED_PORT, 0);
 }
-
-// void disableInterrupts()
-// {
-//     __asm__ __volatile__("cli"
-//                          :
-//                          :
-//                          : "memory");
-// }
-
-// void enableInterrupts()
-// {
-//     __asm__ __volatile__("sti"
-//                          :
-//                          :
-//                          : "memory");
-// }

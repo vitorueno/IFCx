@@ -1,5 +1,8 @@
 #include "imprime.h"
-#include "lib.h"
+#include "print.h"
+#include "io.h"
+
+#define MAX_DIGITS 11 // Máximo de dígitos para um número inteiro
 
 uint16_t *textmemptr;
 
@@ -70,7 +73,7 @@ void cls()
 }
 
 /* Puts a single character on the screen */
-void putch(uint8_t c)
+void putc(uint8_t c)
 {
     uint16_t *where;
     uint32_t att = text_color << 8;
@@ -144,9 +147,40 @@ void puts(uint8_t *text)
 
     for (i = 0; i < strlen(text); i++)
     {
-        putch(text[i]);
+        putc(text[i]);
     }
 }
+
+uint8_t *intToAscii(int number) {
+    static uint8_t result[MAX_DIGITS];
+    int i = MAX_DIGITS - 1;
+    int isNegative = 0;
+
+    // Lida com o caso especial de número zero
+    if (number == 0) {
+        result[i--] = '0';
+    }
+    // Lida com números negativos
+    else if (number < 0) {
+        isNegative = 1;
+        number = -number;
+    }
+
+    // Converte cada dígito para um caractere ASCII
+    while (number != 0) {
+        int digit = number % 10;
+        result[i--] = digit + '0';
+        number /= 10;
+    }
+
+    // Adiciona o sinal negativo, se necessário
+    if (isNegative) {
+        result[i--] = '-';
+    }
+
+    return &result[i + 1];
+}
+
 
 /* Define cor principal e cor de fundo */
 void settextcolor(uint8_t forecolor, uint8_t backcolor)
