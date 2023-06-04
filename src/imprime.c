@@ -1,5 +1,4 @@
 #include "imprime.h"
-#include "print.h"
 #include "io.h"
 
 #define MAX_DIGITS 11 // Máximo de dígitos para um número inteiro
@@ -142,6 +141,16 @@ void putc(uint8_t c)
 
 /* Uses the above routine to output a string... */
 void puts(uint8_t *text)
+{
+    int i;
+
+    for (i = 0; i < strlen(text); i++)
+    {
+        putc(text[i]);
+    }
+}
+
+void putchar(const char *text)
 {
     int i;
 

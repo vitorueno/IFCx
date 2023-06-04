@@ -1,6 +1,5 @@
 #include "idt.h"
 #include "imprime.h"
-#include "print.h"
 
 typedef struct
 {
@@ -44,5 +43,5 @@ extern void __attribute__((cdecl)) loadIDT(IdtPointer *idtPtr); // written in th
 void initializeIDT()
 {
     loadIDT(&idtPointer);
-    puts("IDT carregada");
+    puts("IDT carregada\n");
 }

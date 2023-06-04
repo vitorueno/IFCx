@@ -67,3 +67,14 @@ size_t numlen(const uint64_t num)
     return length;
 }
 
+// calcula a potência de um número base^expoente
+int pow(int base, int expoente)
+{
+    int resultado = 1;
+    for (int i = 0; i < expoente; i++)
+    {
+        resultado *= base;
+    }
+
+    return resultado;
+}

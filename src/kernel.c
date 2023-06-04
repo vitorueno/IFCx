@@ -5,13 +5,10 @@
 #include "idt.h"
 #include "isr.h"
 #include "irq.h"
-#include "print.h"
 
 void onTimerTick(Registers *regs)
 {
-    //puts("O timer foi disparado");
-    putc('\n');
-    puts(intToAscii(-123));
+    puts("O timer foi disparado\n");
 }
 
 void onKeyPress(Registers *regs)
@@ -27,7 +24,7 @@ int main()
     initializeIRQ();
 
 
-    char *mensagem = "Bem vindo ao IFCX\0";
+    char *mensagem = "Bem vindo ao IFCX\n";
     puts(mensagem);
 
     irqRegisterHandler(0, onTimerTick);

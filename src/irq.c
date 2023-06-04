@@ -1,7 +1,7 @@
 #include "irq.h"
 #include "pic.h"
 #include "io.h"
-#include "print.h"
+#include "imprime.h"
 #include "lib.h"
 #include "types.h"
 
@@ -19,8 +19,8 @@ void irqHandler(Registers *regs)
     }
     else
     {
-        printStringAt("IRQ nao tratada: ", 1, 1);
-        printNumAt(irq, 1, strlen("IRQ nao tratada: ") + 1);
+        puts("IRQ nao tratada:\n");
+        puts(intToAscii(irq));
     }
 
     sendEOI(irq);
@@ -35,7 +35,7 @@ void initializeIRQ()
 
     enableInterrupts();
 
-    printStringAt("IRQs carregadas", 24, 1);
+    puts("IRQs carregadas\n");
 }
 
 void irqRegisterHandler(int irq, IRQHandler handler)

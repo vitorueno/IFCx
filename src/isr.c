@@ -1,7 +1,7 @@
 #include "isr.h"
 #include "gdt.h"
 #include "idt.h"
-#include "print.h"
+#include "imprime.h"
 
 void __attribute((cdecl)) isr0();
 void __attribute((cdecl)) isr1();
@@ -152,58 +152,58 @@ void __attribute__((cdecl)) isrHandler(Registers *regs)
     else if (regs->interrupt < 32)
     {
         // mostrar erro
-        printStringAt("Erro numero: ", 1, 1);
-        printNumAt(regs->interrupt, 1, 1 + strlen("Erro numero: "));
-        printStringAt("\"", 1, 17);
-        printStringAt(exceptionMessages[regs->interrupt], 1, 18);
-        printStringAt("\"", 1, 18 + strlen(exceptionMessages[regs->interrupt]));
+        puts("Erro numero: ");
+        puts(intToAscii(regs->interrupt));
+        puts("\'");
+        putchar(exceptionMessages[regs->interrupt]);
+        puts("\'");
 
         // mostrar regs
-        printStringAt("eax: ", 2, 1);
-        printNumAt(regs->eax, 2, 1 + strlen("eax: "));
+        puts("eax: ");
+        puts(intToAscii(regs->eax));
 
-        printStringAt("ebx: ", 3, 1);
-        printNumAt(regs->ebx, 3, 1 + strlen("ebx: "));
+        puts("ebx: ");
+        puts(intToAscii(regs->ebx));
 
-        printStringAt("ecx: ", 4, 1);
-        printNumAt(regs->ecx, 4, 1 + strlen("ecx: "));
+        puts("ecx: ");
+        puts(intToAscii(regs->ecx));
 
-        printStringAt("edx: ", 5, 1);
-        printNumAt(regs->edx, 5, 1 + strlen("edx: "));
+        puts("edx: ");
+        puts(intToAscii(regs->edx));
 
-        printStringAt("edi: ", 6, 1);
-        printNumAt(regs->edi, 6, 1 + strlen("edi: "));
+        puts("edi: ");
+        puts(intToAscii(regs->edi));
 
-        printStringAt("esi: ", 7, 1);
-        printNumAt(regs->esi, 7, 1 + strlen("esi: "));
+        puts("esi: ");
+        puts(intToAscii(regs->esi));
 
-        printStringAt("ebp: ", 8, 1);
-        printNumAt(regs->ebp, 8, 1 + strlen("ebp: "));
+        puts("ebp: ");
+        puts(intToAscii(regs->ebp));
 
-        printStringAt("esp: ", 9, 1);
-        printNumAt(regs->esp, 9, 1 + strlen("ebp: "));
+        puts("esp: ");
+        puts(intToAscii(regs->esp));
 
-        printStringAt("ss: ", 10, 1);
-        printNumAt(regs->ss, 10, 1 + strlen("ss: "));
+        puts("ss: ");
+        puts(intToAscii(regs->ss));
 
-        printStringAt("ds: ", 11, 1);
-        printNumAt(regs->ds, 11, 1 + strlen("ds: "));
+        puts("ds: ");
+        puts(intToAscii(regs->ds));
 
-        printStringAt("cs: ", 12, 1);
-        printNumAt(regs->cs, 12, 1 + strlen("cs: "));
+        puts("cs: ");
+        puts(intToAscii(regs->cs));
 
-        printStringAt("eflags: ", 13, 1);
-        printNumAt(regs->eflags, 13, 1 + strlen("eflags: "));
+        puts("eflags: ");
+        puts(intToAscii(regs->eflags));
 
-        printStringAt("eip: ", 14, 1);
-        printNumAt(regs->eip, 14, 1 + strlen("eip: "));
+        puts("eip: ");
+        puts(intToAscii(regs->eip));
 
         fim();
     }
     else
     {
-        printStringAt("interrupcao numero: ", 1, 1);
-        printNumAt(regs->interrupt, 1, 1 + strlen("interrupcao numero: "));
+        puts("interrupcao numero: ");
+        puts(intToAscii(regs->interrupt));
     }
 }
 
@@ -216,7 +216,7 @@ void initializeISR()
 
     disableIdtGate(0x80);
 
-    printStringAt("ISRs carregadas", 23, 1);
+    puts("ISRs carregadas\n");
 }
 
 void isrRegisterHandler(int interruptNumber, ISRHandler handler)
