@@ -147,64 +147,69 @@ extern void fim();
 void __attribute__((cdecl)) isrHandler(Registers *regs)
 {
     if (isrHandlers[regs->interrupt] != NULL)
+    {
         isrHandlers[regs->interrupt](regs);
+        return;
+    }
 
     else if (regs->interrupt < 32)
     {
+        cls();
+
         // mostrar erro
         puts("Erro numero: ");
         puts(intToAscii(regs->interrupt));
-        puts("\'");
+        puts(" \'");
         putchar(exceptionMessages[regs->interrupt]);
-        puts("\'");
+        puts("\'\n");
 
         // mostrar regs
         puts("eax: ");
         puts(intToAscii(regs->eax));
 
-        puts("ebx: ");
+        puts("\nebx: ");
         puts(intToAscii(regs->ebx));
 
-        puts("ecx: ");
+        puts("\necx: ");
         puts(intToAscii(regs->ecx));
 
-        puts("edx: ");
+        puts("\nedx: ");
         puts(intToAscii(regs->edx));
 
-        puts("edi: ");
+        puts("\nedi: ");
         puts(intToAscii(regs->edi));
 
-        puts("esi: ");
+        puts("\nesi: ");
         puts(intToAscii(regs->esi));
 
-        puts("ebp: ");
+        puts("\nebp: ");
         puts(intToAscii(regs->ebp));
 
-        puts("esp: ");
+        puts("\nesp: ");
         puts(intToAscii(regs->esp));
 
-        puts("ss: ");
+        puts("\nss: ");
         puts(intToAscii(regs->ss));
 
-        puts("ds: ");
+        puts("\nds: ");
         puts(intToAscii(regs->ds));
 
-        puts("cs: ");
+        puts("\ncs: ");
         puts(intToAscii(regs->cs));
 
-        puts("eflags: ");
+        puts("\neflags: ");
         puts(intToAscii(regs->eflags));
 
-        puts("eip: ");
+        puts("\neip: ");
         puts(intToAscii(regs->eip));
-
-        fim();
     }
     else
     {
-        puts("interrupcao numero: ");
+        puts("\ninterrupcao numero: ");
         puts(intToAscii(regs->interrupt));
     }
+    putc('\n');
+    fim();
 }
 
 void initializeISR()
