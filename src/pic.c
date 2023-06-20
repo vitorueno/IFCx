@@ -77,8 +77,8 @@ void maskIRQ(int irq)
         irq -= 8;
     }
 
-    uint8_t mask = inportb(PIC1_DATA_PORT);
-    outportb(PIC1_DATA_PORT, mask | (1 << irq));
+    uint8_t mask = inportb(port);
+    outportb(port, mask | (1 << irq));
 }
 
 // OCW1
@@ -94,8 +94,8 @@ void unmaskIRQ(int irq)
         irq -= 8;
     }
 
-    uint8_t mask = inportb(PIC1_DATA_PORT);
-    outportb(PIC1_DATA_PORT, mask & ~(1 << irq));
+    uint8_t mask = inportb(port);
+    outportb(port, mask & ~(1 << irq));
 }
 
 void disablePIC()
