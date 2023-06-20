@@ -54,13 +54,22 @@ _start:
         movl $0x0, 0x800                       # 4 primeiros bytes do null_descriptor 
         movl $0x0, 0x804                       # 4 ultimos bytes do null_descriptor
 
-        # data segment descriptor
-        movl $0x0000ffff, 0x808                # enviando primeiros 16 bits de limit
-        movl $0x00CF9200, 0x80C                # read/write
-
         # code segment descriptor
-        movl $0x0000FFFF, 0x810                # enviando primeiros 16 bits de limit
-        movl $0x00CF9800, 0x814                # execute/read
+        movw $0xffff, 0x808
+        movw $0x0000, 0x80A
+        movb $0x00, 0x80C 
+        movb $0b10011010, 0x80D
+        movb $0b11001111, 0x80E
+        movb $0x00, 0x80F
+
+        # data segment descriptor
+        movw $0xffff, 0x810
+        movw $0x0000, 0x812
+        movb $0x00, 0x814
+        movb $0b10010010, 0x815
+        movb $0b11001111, 0x816
+        movb $0x00, 0x817
+
     ##################################################################
 
     # entrando no modo 32 bits
@@ -71,15 +80,7 @@ _start:
     or $0x01, %al                              # definindo último bit como 1
     movl %eax, %cr0                            # enviando valor de volta (32 bits!!!!!)
 
-    jmp $0x10, $start32                        # indo para o código 32 bits (far jump)
-
-
-    # variável que guarda endereços da GDT 
-    ##################################################################
-    gdt_reg:
-        .word 0x0017                           # tamanho da gdt
-        .long 0x00000800                       # endereço inicial de gdt_start
-    ##################################################################
+    jmp $0x8, $start32                        # indo para o código 32 bits (far jump)
 
     # variável que guarda o número do disco 
     BOOT_DISK: 
@@ -91,12 +92,18 @@ _start:
         movb $0x0e, %ah                         # função de imprimir caracter
         int  $0x10                              # chamada de vídeo da bios
 
+     # variável que guarda endereços da GDT 
+    ##################################################################
+    gdt_reg:                                   
+        .word 0x0017                           # tamanho da gdt => (8*3) - 1 = 23 = 0x17  
+        .long 0x00000800                       # endereço inicial de gdt_start
+    ##################################################################
 
 # parte do código que será em 32 bits
 .code32                                         # dizendo para o compilador que aqui é 32 bits
 start32:
     # definindo seg. registers e stack
-    movw $0x8, %ax                              # ax = novo DATA_SEG 
+    movw $0x10, %ax                              # ax = novo DATA_SEG 
     movw %ax, %ds                               # ds = ax
     movw %ax, %ss                               # ss = ax
     movw %ax, %es                               # es = ax
