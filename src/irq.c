@@ -19,8 +19,9 @@ void irqHandler(Registers *regs)
     }
     else
     {
-        puts("IRQ nao tratada:\n");
+        puts("IRQ nao tratada: ");
         puts(intToAscii(irq));
+        putc('\n');
     }
 
     sendEOI(irq);
